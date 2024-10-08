@@ -51,16 +51,19 @@ namespace NailsGroupAssignment
                     NailClipper.ClipAll(Fingers, Toes, DesiredLength);
                 }
 
-                if(DecideIfShouldPaint(Fingers, Toes) && DecideIfSpecialDay())
+                if(DecideIfShouldPaint(Fingers, Toes))
                 {
-                    NailPainter.MulticolorPaintAll(Fingers, Toes);
-                }
-                else
-                {
-                    NailPainter.PaintAll(Fingers, Toes);
+                    if (DecideIfSpecialDay())
+                    {
+                        NailPainter.MulticolorPaintAll(Fingers, Toes);
+                    }
+                    else
+                    {
+                        NailPainter.PaintAll(Fingers, Toes);
+                    }
                 }
 
-                printer.PrintNailInfo(Toes, Fingers, DesiredLength); //print out all of the nail-lengths
+                printer.PrintNailInfo(Toes, Fingers, DesiredLength); //print out all of the nail-info
             }
         }
 
@@ -106,7 +109,7 @@ namespace NailsGroupAssignment
         {
             Random random = new Random();
 
-            if(random.Next(0,5) == 3 && !fingers[1].Nail.IsPainted)
+            if (random.Next(0,5) == 3 && !fingers[1].Nail.IsPainted)
             {
                 return true;
             }
