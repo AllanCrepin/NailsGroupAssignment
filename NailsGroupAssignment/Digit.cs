@@ -8,12 +8,11 @@ namespace NailsGroupAssignment
 {
     public abstract class Digit
     {
-        public Nail nail { get; set; }
+        public Nail Nail { get; set; }
 
         public Digit(float desiredLength, float startLength)
         {
-            nail = new Nail(startLength, desiredLength);
-
+            Nail = new Nail(startLength, desiredLength);
         }
     }
 }

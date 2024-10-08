@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,21 +9,34 @@ namespace NailsGroupAssignment
 {
     public class NailClipper
     {
-        Random random = new Random();
+        Random Random = new Random();
         public int PrecisionInMicrometer { get; set; }
         public NailClipper(int precision)
         {
             PrecisionInMicrometer = precision;
         }
 
-        public double Clip(Nail nail, float DesiredLength)
+        public void Clip(Nail nail, float desiredLength) //it edits the object directly -> no return necessary
         {
-            int desiredLengthConverted = (int)DesiredLength;
+            int desiredLengthConverted = (int)desiredLength;
+            desiredLengthConverted *= 10; //turning MM into Micrometer
 
-            nail.Length = random.Next(desiredLengthConverted - PrecisionInMicrometer, desiredLengthConverted + PrecisionInMicrometer);
-            nail.Length /= 10.0f;
+            //randomize cut-precision
+            float lengthToCut = (float)Random.Next(desiredLengthConverted - PrecisionInMicrometer, desiredLengthConverted + PrecisionInMicrometer);
 
-            return nail.Length;
+            lengthToCut /= 10f; //turning Micrometer into MM
+            nail.Length -= lengthToCut; //remove from object.Length
+        }
+        public void ClipAll(List<Finger> fingers, List<Toe> toes, float desiredLength)
+        {
+            foreach (Finger finger in fingers)
+            {
+                Clip(finger.Nail, desiredLength);
+            }
+            foreach (Toe toe in toes)
+            {
+                Clip(toe.Nail, desiredLength);
+            }
         }
     }
 }

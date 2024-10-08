@@ -11,8 +11,11 @@ namespace NailsGroupAssignment
         {
 
             Simulator nailClipperSimulator = new Simulator();
-            nailClipperSimulator.Run(40);
+            Menu menu = new Menu();
+
+            nailClipperSimulator.Run(menu.ChooseNumberDays());
 
         }
+
     }
 }

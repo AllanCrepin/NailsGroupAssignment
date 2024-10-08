@@ -14,6 +14,7 @@ namespace NailsGroupAssignment
         public float VitaminDefficiency { get; set; }
         public float GrowthRate { get; set; }
         public float DesiredLength { get; set; }
+        public ConsoleColor color { get; set; }
 
         public Nail(float length, float desiredLength)
         {
@@ -24,10 +25,6 @@ namespace NailsGroupAssignment
         {
             Length += 0.1f;
         }
-
-        public void Paint()
-        {
-
-        }
     }
 }
+
