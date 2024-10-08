@@ -35,7 +35,7 @@ namespace NailsGroupAssignment
             foreach (Toe toe in toes)
             {
                 if (toe.Nail.Length >= desiredLength + 2) { Console.ForegroundColor = ConsoleColor.Red; }
-                Console.Write($"Toe {toe.TypeOfToe}' nail has reached " + toe.Nail.Length.ToString("F1") + "mm");
+                Console.Write($"Toe {toe.TypeOfToe}'s nail has reached " + toe.Nail.Length.ToString("F1") + "mm");
                 PrintNailColor(toe);
                 Console.ForegroundColor = ConsoleColor.White;
             }
